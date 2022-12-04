@@ -1,0 +1,4 @@
+cd /etc/cron.d
+vim mycron (:wq!)
+sysemctl restart cron
+tail -f /var/log/logged-in.log

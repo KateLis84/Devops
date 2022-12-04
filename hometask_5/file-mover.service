@@ -1,0 +1,12 @@
+[Unit] 
+Description=Files Mover Service 
+After=network.target 
+
+[Service] 
+User=root 
+ExecStart=/bin/bash /home/script/script.sh 
+RestartSec=5s 
+Restart=on-failure 
+
+[Install] 
+WantedBy=multi-user.target
