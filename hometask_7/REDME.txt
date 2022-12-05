@@ -1,4 +1,4 @@
-**Налаштовуємо ключ**
+**Set key**
 
 ssh-keygen -t rsa - створюємо ключ
 /home/kate/.ssh/id_rsa.pub - записуємо його
