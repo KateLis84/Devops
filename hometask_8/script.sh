@@ -7,8 +7,8 @@ yum install mod_ssl -y
 sudo yum install firewalld 
 
 # перекидуємо наш файлик html
-sudo mkdir /var/www/
-sudo cp /vagrant/index.html /var/www/index.html
+sudo mkdir /var/www/ssl-test
+sudo cp -f /vagrant/index.html /var/www/index.html
 
 # відкриваємо http та https порти
 sudo systemctl enable firewalld # дозволяє, запускає перевіряє фаєрвол
@@ -18,6 +18,7 @@ sudo firewall-cmd --state
 # Вмикаємо апаче
 sudo systemctl enable httpd
 sudo systemctl start httpd
+sudo systemctl status httpd
 
 #  Конфігурація
 sudo cp -f /vagrant/local.conf /etc/httpd/conf.d/
@@ -25,6 +26,8 @@ sudo cp -f /vagrant/local.conf /etc/httpd/conf.d/
 sudo apachectl configtest
 sudo systemctl reload httpd
 
+
+# Порти
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --permanent --add-port=80/tcp
